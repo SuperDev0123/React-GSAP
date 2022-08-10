@@ -21,17 +21,17 @@ const ServiceSection = styled.section`
 
 const Captivating = styled.div`
   width: 100%;
-  // height: 100vh;
+  height: 90vh;
   position: relative;
-  margin-bottom: 50vh;
 `;
 
 const CaptivatingContainer = styled.div`
   position: relative;
-  top: 0;
+  top: 50%;
   left: 90%;
-  transform: translateX(-100%);
+  transform: translate(-100%, 50%);
   width: 60vw;
+  opacity: 0.3;
 `
 
 const CaptivatingText = styled.div`
@@ -50,24 +50,57 @@ const CaptivatingSection = () => {
     // const mq = window.matchMedia("(max-width: 40em)");
     // console.log("mq", mq);
     // if (mq.matches) {
+    console.log(element)
+    console.log(element.childNodes)
+    console.log(element.childNodes[0])
     if (true) {
-      gsap.from(
-        element,
+      gsap.to(
+        element.childNodes[0],
         {
-          top: 300,
-          opacity: 0,
-
-          ease: "power2.inOut",
+          opacity: 1,
+          ease: "slow",
           scrollTrigger: {
             id: `section-1`,
-            trigger: element,
-            start: "bottom bottom",
-            end: "top center",
+            trigger: element.childNodes[0],
+            start: "center bottom",
+            end: "center center",
             scrub: true,
             snap: true,
           },
         }
       );
+      gsap.from(
+        element.childNodes[0],
+        {
+          left: '0%',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-3`,
+            trigger: element.childNodes[0],
+            start: "center bottom",
+            end: "center center",
+            scrub: true,
+            snap: true,
+          },
+        }
+      );
+      gsap.from(
+        element.childNodes[0].childNodes[1],
+        {
+          bottom: '-80%',
+
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-2`,
+            trigger: element.childNodes[0],
+            start: "center bottom",
+            end: "top top",
+            scrub: true,
+            snap: true,
+          },
+        }
+      );
+      
     } else {
       gsap.to(element, {
         position: "fixed",

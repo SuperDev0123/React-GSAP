@@ -15,11 +15,15 @@ const Headers = styled.header`
   background-color: var(--black);
   color: var(--white);
   z-index: 500;
-  @media only Screen and (max-width: 64em) {
-    padding: 0.5rem 3rem;
-  }
-  @media only Screen and (max-width: 40em) {
-    padding: 0.5rem 1.5rem;
+  &:after {
+    content: '';
+    background: linear-gradient( to right, #f0bc3f, rgba(0, 0, 0, 0) ) 100% 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    display: block;
   }
 `;
 

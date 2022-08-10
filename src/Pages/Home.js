@@ -5,6 +5,8 @@ import HeroSection from "../Sections/Hero/index";
 import About from "../Sections/About/index";
 import Services from "../Sections/Services/index";
 import Captivating from "../Sections/Captivating/index";
+import Speed from "../Sections/Speed/index";
+import SpeedChart from "../Sections/SpeedChart/index";
 import Testimonials from "../Sections/Testimonials/index";
 import Contact from "../Sections/Contact/index";
 import styled from "styled-components";
@@ -22,6 +24,11 @@ const Home = () => {
     <Container>
       <HeroSection />
       <Captivating />
+      <div style={{height: '100vh'}}/>
+      <Speed />
+      <div style={{height: '60vh'}}/>
+      <SpeedChart />
+      <div style={{height: '100vh', background: '#18171c'}}/>
       {/* <About /> */}
       {/* <Services /> */}
       {/* <Testimonials />
