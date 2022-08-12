@@ -7,8 +7,11 @@ import Services from "../Sections/Services/index";
 import Captivating from "../Sections/Captivating/index";
 import Speed from "../Sections/Speed/index";
 import SpeedChart from "../Sections/SpeedChart/index";
-import Testimonials from "../Sections/Testimonials/index";
-import Contact from "../Sections/Contact/index";
+import PrimeMover from "../Sections/PrimeMover/index";
+import Comfort from "../Sections/Comfort/index";
+import PowerHouse from "../Sections/PowerHouse/index";
+import DualSuspension from "../Sections/DualSuspension/index";
+import SubFooter from "../Sections/SubFooter/index";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -24,15 +27,24 @@ const Home = () => {
     <Container>
       <HeroSection />
       <Captivating />
-      <div style={{height: '100vh'}}/>
+      <div style={{ height: '100vh' }} />
       <Speed />
-      <div style={{height: '60vh'}}/>
+      <div style={{ height: '60vh' }} />
       <SpeedChart />
-      <div style={{height: '100vh', background: '#18171c'}}/>
+      <div style={{ height: '100vh' }} />
+      <PrimeMover />
+      <div style={{ height: '100vh' }} />
+      <Comfort />
+      <div style={{ height: '100vh' }} />
+      <PowerHouse />
+      <div style={{ height: '60vh' }} />
+      <DualSuspension />
+      <div style={{ height: '100vh' }} />
       {/* <About /> */}
       {/* <Services /> */}
       {/* <Testimonials />
       <Contact /> */}
+      <SubFooter />
     </Container>
   );
 };

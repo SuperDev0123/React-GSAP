@@ -62,7 +62,7 @@ const CaptivatingSection = () => {
           scrollTrigger: {
             id: `section-1`,
             trigger: element.childNodes[0],
-            start: "center bottom",
+            start: "top center",
             end: "center center",
             scrub: true,
             snap: true,
@@ -77,7 +77,7 @@ const CaptivatingSection = () => {
           scrollTrigger: {
             id: `section-3`,
             trigger: element.childNodes[0],
-            start: "center bottom",
+            start: "top center",
             end: "center center",
             scrub: true,
             snap: true,

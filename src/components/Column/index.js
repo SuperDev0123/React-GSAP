@@ -22,6 +22,10 @@ const Column = styled.div`
   @media only screen and (min-width: 1200px) {
     ${({lg}) => lg && getWidthString(lg)};
   }
+
+  @media only screen and (min-width: 1600px) {
+    ${({xl}) => xl && getWidthString(xl)};
+  }
 `
 
 export default Column;

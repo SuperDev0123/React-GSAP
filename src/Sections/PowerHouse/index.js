@@ -4,15 +4,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styled, { keyframes } from "styled-components";
+import { HeartFill } from '@styled-icons/bootstrap'
+import BikeImg from "../../assets/Accera-bike-2.png";
+import BottomLine from "../../assets/border-bottom-line.png";
 import Column from '../../components/Column'
 import Row from '../../components/Row'
-import { HeartFill } from '@styled-icons/bootstrap'
-import SpeedChartImg from "../../assets/faster-then-faster.jpg";
-import BottomLine from "../../assets/border-bottom-line.png";
 
 const ServiceSection = styled.section`
   width: 100vw;
-  /* background-color: #0a0b10; */
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -21,7 +20,7 @@ const ServiceSection = styled.section`
   position: relative;
 `;
 
-const SpeedChart = styled.div`
+const PowerHouse = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
@@ -29,25 +28,27 @@ const SpeedChart = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 20px;
   background: #18171c;
-  overflow: hidden;
+  padding: 50px 10%;
 `;
 
-const SpeedChartTitle = styled.h2`
+const PowerHouseTitle = styled.h2`
+  font-size: 50px;
+  padding: 20px 0;
   text-align: center;
-  font-size: 32px;
-  padding: 30px 0;
 `
-const SpeedText = styled.p`
-  line-height: 32px;
+const PowerHouseText = styled.p`
+  line-height: 29px;
   font-size: 16px;
   font-weight: normal;
   padding: 20px 0;
+  text-align: center;
 `
 
-const SpeedChartSection = () => {
+const PowerHouseSection = () => {
   const ref = useRef(null);
+  const sloganRef = useRef(null);
+  const imgRef = useRef(null);
 
   useEffect(() => {
     const element = ref.current;
@@ -71,24 +72,39 @@ const SpeedChartSection = () => {
           },
         }
       );
-      element.childNodes.forEach((elem, index) => {
-        gsap.from(
+      sloganRef.current.childNodes.forEach((elem, index) => {
+        elem.style.opacity = 0.15;
+        gsap.to(
           elem,
           {
-            marginLeft: index % 2 === 1 ? '100%' : 0,
-            marginRight: index % 2 === 0 ? '100%' : 0,
-            opacity: 0,
+            opacity: 1,
+            ease: "slow",
             scrollTrigger: {
               id: `section-${index}`,
               trigger: elem,
-              start: "top bottom",
-              end: "center center",
+              start: "center center+=300",
+              end: "bottom top",
               scrub: true,
               snap: true,
             },
           }
         );
-      })
+      });
+      gsap.from(
+        imgRef.current.childNodes[0],
+        {
+          transform: 'skew(10deg, 10deg)',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: imgRef.current.childNodes[0],
+            start: "bottom bottom",
+            end: "top top",
+            scrub: true,
+            snap: true,
+          },
+        }
+      );      
     } else {
       gsap.to(element, {
         position: "fixed",
@@ -115,23 +131,25 @@ const SpeedChartSection = () => {
   }, []);
 
   return (
-    <SpeedChart id='speed_chart' ref={ref}>
-      <Row style={{ maxWidth: '1140px' }}>
-        <Column xs={12} md={4}>
-          <SpeedChartTitle>
-            Fastest of all, hands down the best ebike
-          </SpeedChartTitle>
-          <SpeedText>
-            The 250 W motor gives you the speed you need, the electric cycle tops a speed of 25 km/h* once you start pedaling. The uncapped speed of the bike goes way faster than that reaching up to 60km/h but as per the Government Of India mandate, we lock the speed at 25km/h*.
-          </SpeedText>
-          <img src={BottomLine} alt="Bottom Line 2" />
+    <PowerHouse id='power_house' ref={ref}>
+      <Row>
+        <Column xs={12} md={6} ref={sloganRef}>
+          <PowerHouseTitle>
+            The Power House
+          </PowerHouseTitle>
+          <img src={BottomLine} style={{ width: '80%' }} alt="Bottom Line" />
+          <PowerHouseText>
+            Bikes have a large engine in the front, and you have a gearbox, which is cumbersome. Electric bikes do not have these problems, the motor is much smaller, and the battery is much more powerful. This will allow you to play with different shapes and dimensions of the roads. Svitch bike comes with various batter options. <br />
+            1. MXE- 36 Volt, 8.7AH & 36 Volt, 9.6 AH <br />
+            2. XE & XE+ – 48 Volt, 11.6 AH & 48 Volt, 14.5 Ah. <br />
+          </PowerHouseText>
         </Column>
-        <Column xs={12} md={8}>
-          <img src={SpeedChartImg} alt="25 km" />
+        <Column xs={12} md={6} ref={imgRef}>
+          <img src={BikeImg} alt="Bike 2" />
         </Column>
       </Row>
-    </SpeedChart>
+    </PowerHouse>
   );
 };
 
-export default SpeedChartSection;
+export default PowerHouseSection;

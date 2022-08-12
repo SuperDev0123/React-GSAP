@@ -32,6 +32,7 @@ const Speed = styled.div`
 const SpeedTitle = styled.h2`
   text-align: center;
   font-size: 32px;
+  padding: 20px 0;
 `
 const SpeedText = styled.p`
   line-height: 29px;
