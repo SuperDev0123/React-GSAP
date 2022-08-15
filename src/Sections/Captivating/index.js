@@ -32,6 +32,12 @@ const CaptivatingContainer = styled.div`
   transform: translate(-100%, 50%);
   width: 60vw;
   opacity: 0.3;
+
+  @media (max-width: 640px) {
+    width: 90vw;
+    left: 5vw;
+    transform: unset;
+  }
 `
 
 const CaptivatingText = styled.div`
@@ -39,6 +45,13 @@ const CaptivatingText = styled.div`
   width: 80%;
   bottom: -25%;
   left: -25%;
+  
+  @media (max-width: 640px) {
+    width: 90vw;
+    left: 5vw;
+    bottom: 0%;
+    transform: translateY(120%);
+  }
 `
 
 const CaptivatingSection = () => {
@@ -47,13 +60,8 @@ const CaptivatingSection = () => {
   useEffect(() => {
     const element = ref.current;
 
-    // const mq = window.matchMedia("(max-width: 40em)");
-    // console.log("mq", mq);
-    // if (mq.matches) {
-    console.log(element)
-    console.log(element.childNodes)
-    console.log(element.childNodes[0])
-    if (true) {
+    const mq = window.matchMedia("(max-width: 40em)");
+    if (!mq.matches) {
       gsap.to(
         element.childNodes[0],
         {
@@ -65,7 +73,6 @@ const CaptivatingSection = () => {
             start: "top center",
             end: "center center",
             scrub: true,
-            snap: true,
           },
         }
       );
@@ -80,7 +87,6 @@ const CaptivatingSection = () => {
             start: "top center",
             end: "center center",
             scrub: true,
-            snap: true,
           },
         }
       );
@@ -96,33 +102,54 @@ const CaptivatingSection = () => {
             start: "center bottom",
             end: "top top",
             scrub: true,
-            snap: true,
           },
         }
       );
-      
+
     } else {
-      gsap.to(element, {
-        position: "fixed",
-        top: "1rem",
-        left: "3rem",
-        right: "3rem",
-        padding: "1.5rem 2rem",
+      gsap.to(
+        element.childNodes[0],
+        {
+          opacity: 1,
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-1`,
+            trigger: element.childNodes[0],
+            start: "top center",
+            end: "center center",
+            scrub: true,
+          },
+        }
+      );
+      gsap.from(
+        element.childNodes[0],
+        {
+          left: '-100%',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-3`,
+            trigger: element.childNodes[0],
+            start: "top bottom",
+            end: "center center",
+            scrub: true,
+          },
+        }
+      );
+      gsap.from(
+        element.childNodes[0].childNodes[1],
+        {
+          bottom: '-280%',
 
-        borderRadius: "50px",
-
-        border: "3px solid var(--white)",
-
-        duration: 1,
-        ease: "power1.out",
-
-        scrollTrigger: {
-          trigger: element,
-          start: "bottom+=300 top",
-          end: "+=250",
-          scrub: true,
-        },
-      });
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-2`,
+            trigger: element.childNodes[0],
+            start: "center bottom",
+            end: "center center",
+            scrub: true,
+          },
+        }
+      );
     }
   }, []);
 

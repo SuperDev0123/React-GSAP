@@ -5,13 +5,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styled, { keyframes } from "styled-components";
 import { HeartFill } from '@styled-icons/bootstrap'
-import BikeImg from "../../assets/Accera-bike-1.png";
+import BigDaddyImg from "../../assets/BigDaddytire.jpg";
 import BottomLine from "../../assets/border-bottom-line.png";
 import Column from '../../components/Column'
 import Row from '../../components/Row'
 
 const ServiceSection = styled.section`
   width: 100vw;
+  /* background-color: #0a0b10; */
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -20,34 +21,42 @@ const ServiceSection = styled.section`
   position: relative;
 `;
 
-const DualSuspension = styled.div`
-  width: 100%;
+const BigDaddy = styled.div`
+  width: 60vw;
   height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 10%;
 `;
 
-const DualSuspensionTitle = styled.h2`
+const FixedBackground = styled.img`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+`
+
+const BigDaddyTitle = styled.h2`
   font-size: 50px;
   padding: 20px 0;
   text-align: center;
 `
-const DualSuspensionText = styled.p`
+const BigDaddyText = styled.p`
   line-height: 29px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: normal;
   padding: 20px 0;
   text-align: center;
 `
 
-const DualSuspensionSection = () => {
+const BigDaddySection = () => {
   const ref = useRef(null);
-  const sloganRef = useRef(null);
-  const imgRef = useRef(null);
 
   useEffect(() => {
     const element = ref.current;
@@ -56,6 +65,21 @@ const DualSuspensionSection = () => {
     // console.log("mq", mq);
     // if (mq.matches) {
     if (true) {
+      gsap.to(
+        element.childNodes[0],
+        {
+          opacity: 1,
+          top: '0%',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-11`,
+            trigger: element,
+            start: "top bottom",
+            end: "top center",
+            scrub: true,
+          },
+        }
+      );
       gsap.to(
         element,
         {
@@ -70,7 +94,8 @@ const DualSuspensionSection = () => {
           },
         }
       );
-      sloganRef.current.childNodes.forEach((elem, index) => {
+      element.childNodes.forEach((elem, index) => {
+        if (index < 1) return;
         elem.style.opacity = 0.15;
         gsap.to(
           elem,
@@ -86,21 +111,7 @@ const DualSuspensionSection = () => {
             },
           }
         );
-      });
-      gsap.from(
-        imgRef.current.childNodes[0],
-        {
-          transform: 'skew(10deg, 10deg)',
-          ease: "slow",
-          scrollTrigger: {
-            id: `section-21`,
-            trigger: imgRef.current.childNodes[0],
-            start: "bottom bottom",
-            end: "top top",
-            scrub: true,
-          },
-        }
-      );
+      })
     } else {
       gsap.to(element, {
         position: "fixed",
@@ -127,23 +138,23 @@ const DualSuspensionSection = () => {
   }, []);
 
   return (
-    <DualSuspension id='power_house' ref={ref}>
+    <BigDaddy id='big_daddy' ref={ref}>
+      <FixedBackground src={BigDaddyImg} alt="Big Daddy" />
       <Row>
-        <Column xs={12} md={6} ref={imgRef}>
-          <img src={BikeImg} alt="Bike 1" />
-        </Column>
-        <Column xs={12} md={6} ref={sloganRef}>
-          <DualSuspensionTitle>
-            Dual Suspension
-          </DualSuspensionTitle>
+        <Column xs={12} md={12}>
+          <BigDaddyTitle>
+            Big Daddy
+          </BigDaddyTitle>
           <img src={BottomLine} style={{ width: '80%' }} alt="Bottom Line" />
-          <DualSuspensionText>
-            The Mozo Suspension used in the svitch bike makes the ride comfortable in the most bumpy rides. The lockable suspension can be tweaked as per the road you are riding on. The rear suspension makes it smooth for the rider and reduces the jerks on back.
-          </DualSuspensionText>
+          <BigDaddyText>
+            Svitch comes with strong and sturdy tyres, these skid-proof fat tyres make it possible to ride the bike in all types of road conditions; making the anti-puncture fat tyres to have better control while riding on different roads and terrain.
+
+            Svitch uses premium quality Aluminum 6061 hence sustaining anything that your adventure brings. It’s also a foldable ebike , making it easy to carry along with being easy to ride. The bike comes in various different color themes providing you with multiple options, whatever delights your eyes.
+          </BigDaddyText>
         </Column>
       </Row>
-    </DualSuspension>
+    </BigDaddy>
   );
 };
 
-export default DualSuspensionSection;
+export default BigDaddySection;

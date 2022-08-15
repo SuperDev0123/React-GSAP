@@ -41,3 +41,9 @@ video {
   background-size: cover;
   transition: 1s opacity;
 }
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0 !important;
+}

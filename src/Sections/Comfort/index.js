@@ -17,7 +17,7 @@ const ServiceSection = styled.section`
   justify-content: center;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: relative;  
 `;
 
 const Comfort = styled.div`
@@ -32,10 +32,10 @@ const Comfort = styled.div`
 
 const FixedBackground = styled.div`
   position: fixed;
-  top: 10%;
-  left: 5%;
-  width: 90%;
-  height: 80%;  
+  top: 10vh;
+  left: 5vw;
+  width: 90vw;
+  height: 80vh;  
   opacity: 0;
   pointer-events: none;
   border-left: 5px solid #3c2504;
@@ -59,6 +59,9 @@ const ComfortTitle = styled.h2`
   font-size: 93px;
   padding: 20px 0;
   text-align: center;
+  @media (max-width: 640px) {
+    font-size: 60px;
+  }
 `
 const ComfortText = styled.p`
   text-align: center;
@@ -66,6 +69,10 @@ const ComfortText = styled.p`
   font-size: 25px;
   font-weight: normal;
   padding: 20px 0;
+  
+  @media (max-width: 640px) {
+    font-size: 18px;
+  }
 `
 
 const ComfortSection = () => {
@@ -89,7 +96,6 @@ const ComfortSection = () => {
             start: "top bottom",
             end: "bottom bottom",
             scrub: true,
-            snap: true,
           },
         }
       );
@@ -104,7 +110,6 @@ const ComfortSection = () => {
             start: "bottom center",
             end: "bottom top",
             scrub: true,
-            snap: true,
           },
         }
       );
@@ -122,7 +127,6 @@ const ComfortSection = () => {
               start: "center center+=300",
               end: "bottom top",
               scrub: true,
-              snap: true,
             },
           }
         );
@@ -160,9 +164,9 @@ const ComfortSection = () => {
       </ComfortTitle>
       <img src={BottomLine} style={{ width: '80%' }} alt="Bottom Line" />
       <ComfortText>
-        The Svitch Bike comes with a front <br/>
-        suspension which makes <br/>
-        the ride smooth and comfortable. <br/>
+        The Svitch Bike comes with a front <br />
+        suspension which makes <br />
+        the ride smooth and comfortable. <br />
         It’s the Best ebike in Ahmedabad, India
       </ComfortText>
     </Comfort>

@@ -4,15 +4,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styled, { keyframes } from "styled-components";
+import { HeartFill } from '@styled-icons/bootstrap'
+import BikeImg from "../../assets/Sturd1y-600x477.png";
+import BottomLine from "../../assets/border-bottom-line.png";
 import Column from '../../components/Column'
 import Row from '../../components/Row'
-import { HeartFill } from '@styled-icons/bootstrap'
-import SpeedChartImg from "../../assets/faster-then-faster.jpg";
-import BottomLine from "../../assets/border-bottom-line.png";
 
 const ServiceSection = styled.section`
   width: 100vw;
-  /* background-color: #0a0b10; */
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -21,7 +20,7 @@ const ServiceSection = styled.section`
   position: relative;
 `;
 
-const SpeedChart = styled.div`
+const Sturdy = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
@@ -29,25 +28,26 @@ const SpeedChart = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 20px;
-  background: #18171c;
-  overflow: hidden;
+  padding: 50px 10%;
 `;
 
-const SpeedChartTitle = styled.h2`
+const SturdyTitle = styled.h2`
+  font-size: 50px;
+  padding: 20px 0;
   text-align: center;
-  font-size: 32px;
-  padding: 30px 0;
 `
-const SpeedText = styled.p`
-  line-height: 32px;
+const SturdyText = styled.p`
+  line-height: 29px;
   font-size: 16px;
   font-weight: normal;
   padding: 20px 0;
+  text-align: center;
 `
 
-const SpeedChartSection = () => {
+const SturdySection = () => {
   const ref = useRef(null);
+  const sloganRef = useRef(null);
+  const imgRef = useRef(null);
 
   useEffect(() => {
     const element = ref.current;
@@ -56,37 +56,51 @@ const SpeedChartSection = () => {
     // console.log("mq", mq);
     // if (mq.matches) {
     if (true) {
-      gsap.from(
+      gsap.to(
         element,
         {
-          background: 'rgba(0,0,0,0)',
-          ease: "power2",
+          opacity: 0,
+          ease: "slow",
           scrollTrigger: {
-            id: `section-11`,
+            id: `section-12`,
             trigger: element,
-            start: "top bottom",
+            start: "bottom center",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+      sloganRef.current.childNodes.forEach((elem, index) => {
+        elem.style.opacity = 0.15;
+        gsap.to(
+          elem,
+          {
+            opacity: 1,
+            ease: "slow",
+            scrollTrigger: {
+              id: `section-${index}`,
+              trigger: elem,
+              start: "center center+=300",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
+      gsap.from(
+        imgRef.current.childNodes[0],
+        {
+          transform: 'skew(10deg, 10deg)',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: imgRef.current.childNodes[0],
+            start: "bottom bottom",
             end: "top top",
             scrub: true,
           },
         }
       );
-      element.childNodes.forEach((elem, index) => {
-        gsap.from(
-          elem,
-          {
-            marginLeft: index % 2 === 1 ? '100%' : 0,
-            marginRight: index % 2 === 0 ? '100%' : 0,
-            opacity: 0,
-            scrollTrigger: {
-              id: `section-${index}`,
-              trigger: elem,
-              start: "top bottom",
-              end: "center center",
-              scrub: true,
-            },
-          }
-        );
-      })
     } else {
       gsap.to(element, {
         position: "fixed",
@@ -113,23 +127,23 @@ const SpeedChartSection = () => {
   }, []);
 
   return (
-    <SpeedChart id='speed_chart' ref={ref}>
-      <Row style={{ maxWidth: '1140px' }}>
-        <Column xs={12} md={4}>
-          <SpeedChartTitle>
-            Fastest of all, hands down the best ebike
-          </SpeedChartTitle>
-          <SpeedText>
-            The 250 W motor gives you the speed you need, the electric cycle tops a speed of 25 km/h* once you start pedaling. The uncapped speed of the bike goes way faster than that reaching up to 60km/h but as per the Government Of India mandate, we lock the speed at 25km/h*.
-          </SpeedText>
-          <img src={BottomLine} alt="Bottom Line 2" />
+    <Sturdy id='sturdy' ref={ref}>
+      <Row>
+        <Column xs={12} md={6} ref={imgRef}>
+          <img src={BikeImg} alt="Sturdy Bike 1" />
         </Column>
-        <Column xs={12} md={8}>
-          <img src={SpeedChartImg} alt="25 km" />
+        <Column xs={12} md={6} ref={sloganRef}>
+          <SturdyTitle>
+            Sturdy
+          </SturdyTitle>
+          <img src={BottomLine} style={{ width: '80%' }} alt="Bottom Line" />
+          <SturdyText>
+            Made with premium quality Aluminum 6061, so that it can sustain the extremities which your adventure demands.
+          </SturdyText>
         </Column>
       </Row>
-    </SpeedChart>
+    </Sturdy>
   );
 };
 
-export default SpeedChartSection;
+export default SturdySection;

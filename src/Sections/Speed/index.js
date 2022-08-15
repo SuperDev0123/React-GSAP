@@ -64,7 +64,6 @@ const SpeedSection = () => {
               start: "center center+=300",
               end: "top top",
               scrub: true,
-              snap: true,
             },
           }
         );

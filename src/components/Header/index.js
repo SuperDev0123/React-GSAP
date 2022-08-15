@@ -11,7 +11,6 @@ const Headers = styled.header`
   height: 60px;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
   background-color: var(--black);
   color: var(--white);
   z-index: 500;
@@ -36,6 +35,16 @@ const Logo = styled.a`
     top: -10px;
     width: auto;
     transform: translateX(-50%)
+  }
+  
+  @media (max-width: 640px) {
+    img {
+      left: 5%;
+      transform: translateY(-50%);
+      width: 30vw;
+      height: auto;
+      top: 50%;
+    }
   }
 `;
 
@@ -103,6 +112,11 @@ const HamburgerBtn = styled.button`
   }
   .middle_bar {
     stroke-dasharray: 240px 240px;
+  }
+
+
+  @media (max-width: 640px) {
+    display: none;
   }
 `;
 ;
@@ -218,21 +232,6 @@ const Header = () => {
           </svg>
         </Cart>
       </RightBtns>
-
-      {/* <MobileMenu clicked={click}>
-        <a href="#home" onClick={(e) => handleClick("home", e)}>
-          Home
-        </a>
-        <a href="#about" onClick={(e) => handleClick("about", e)}>
-          About Us
-        </a>
-        <a href="#services" onClick={(e) => handleClick("services", e)}>
-          Services
-        </a>
-        <a href="#contact" onClick={(e) => handleClick("contact", e)}>
-          <Button>Contact Us</Button>
-        </a>
-      </MobileMenu> */}
     </Headers>
   );
 };

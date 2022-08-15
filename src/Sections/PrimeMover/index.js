@@ -75,7 +75,6 @@ const PrimeMoverSection = () => {
             start: "top bottom",
             end: "top center",
             scrub: true,
-            snap: true,
           },
         }
       );
@@ -90,7 +89,6 @@ const PrimeMoverSection = () => {
             start: "bottom center",
             end: "bottom top",
             scrub: true,
-            snap: true,
           },
         }
       );
@@ -108,7 +106,6 @@ const PrimeMoverSection = () => {
               start: "center center+=300",
               end: "bottom top",
               scrub: true,
-              snap: true,
             },
           }
         );

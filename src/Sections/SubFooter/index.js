@@ -55,6 +55,10 @@ const SubFooterSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 640px) {
+    margin: 30px 0;
+  }
 `
 
 const SubFooterSectionTitle = styled.h2`
@@ -110,6 +114,27 @@ const SpecText = styled.p`
 const HelperSection = styled.div`
   padding: 100px 50px;
   background-color: #18181c !important;
+  display: flex;
+  overflow-x: auto;
+  
+  &::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #555;
+  }
+
+  &::-webkit-scrollbar
+  {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #333;
+  }
 `
 
 const HelperContainer = styled.div`
@@ -183,6 +208,10 @@ const Introduction = styled.div`
   padding: 30px;
   max-width: 1200px;
   margin: auto;
+  
+  @media (max-width: 640px) {
+    padding: 30px 0;
+  }
 `
 
 const IntroductionText = styled.p`
@@ -301,44 +330,42 @@ const Subfooter = () => {
         </Row>
       </SubFooterSection>
       <HelperSection>
-        <Row>
-          <Column xs={12} sm={6} lg={3}>
-            <HelperContainer>
-              <HelperIcon src={JoinUsIcon} alt='Join Us' />
-              <HelperText>JOIN US</HelperText>
-              <HelperHover>
-                Having any trouble with your Svitch postbuying it? Give us a call or drop a message on our mail or any of our social media platforms. We will get back to you within minutes.
-              </HelperHover>
-            </HelperContainer>
-          </Column>
-          <Column xs={12} sm={6} lg={3}>
-            <HelperContainer>
-              <HelperIcon src={FastSupportIcon} alt='Fast Support' />
-              <HelperText>Fast Support</HelperText>
-              <HelperHover>
-                Just click the photo of yours with your perfect Svitch and tag us. We will tag you back when we read your reviews on Facebook and Instagram.
-              </HelperHover>
-            </HelperContainer>
-          </Column>
-          <Column xs={12} sm={6} lg={3}>
-            <HelperContainer>
-              <HelperIcon src={RideIcon} alt='Ready to Ride' />
-              <HelperText>READY TO RIDE</HelperText>
-              <HelperHover>
-                Take the beast out of the box. A few screws here, a few fixes there and voila! You are good to go! Have the thrill.
-              </HelperHover>
-            </HelperContainer>
-          </Column>
-          <Column xs={12} sm={6} lg={3}>
-            <HelperContainer>
-              <HelperIcon src={ServicesIcon} alt='After-Sale Services' />
-              <HelperText>After-Sale Services</HelperText>
-              <HelperHover>
-                Take it. And make it yours. Don't worry about wear and tear, we are here to look for all the after-sale of Svitch E-bike.
-              </HelperHover>
-            </HelperContainer>
-          </Column>
-        </Row>
+        <Column>
+          <HelperContainer>
+            <HelperIcon src={JoinUsIcon} alt='Join Us' />
+            <HelperText>JOIN US</HelperText>
+            <HelperHover>
+              Having any trouble with your Svitch postbuying it? Give us a call or drop a message on our mail or any of our social media platforms. We will get back to you within minutes.
+            </HelperHover>
+          </HelperContainer>
+        </Column>
+        <Column>
+          <HelperContainer>
+            <HelperIcon src={FastSupportIcon} alt='Fast Support' />
+            <HelperText>Fast Support</HelperText>
+            <HelperHover>
+              Just click the photo of yours with your perfect Svitch and tag us. We will tag you back when we read your reviews on Facebook and Instagram.
+            </HelperHover>
+          </HelperContainer>
+        </Column>
+        <Column>
+          <HelperContainer>
+            <HelperIcon src={RideIcon} alt='Ready to Ride' />
+            <HelperText>READY TO RIDE</HelperText>
+            <HelperHover>
+              Take the beast out of the box. A few screws here, a few fixes there and voila! You are good to go! Have the thrill.
+            </HelperHover>
+          </HelperContainer>
+        </Column>
+        <Column>
+          <HelperContainer>
+            <HelperIcon src={ServicesIcon} alt='After-Sale Services' />
+            <HelperText>After-Sale Services</HelperText>
+            <HelperHover>
+              Take it. And make it yours. Don't worry about wear and tear, we are here to look for all the after-sale of Svitch E-bike.
+            </HelperHover>
+          </HelperContainer>
+        </Column>
       </HelperSection>
       <SubFooterSection>
         <SubFooterSectionTitle>

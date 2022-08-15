@@ -5,7 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styled, { keyframes } from "styled-components";
 import { HeartFill } from '@styled-icons/bootstrap'
-import BikeImg from "../../assets/Accera-bike-2.png";
+import FlexibleImg from "../../assets/Flexible-bike-2.png";
+import SturdyImg from "../../assets/Sturd1y-600x477.png";
 import BottomLine from "../../assets/border-bottom-line.png";
 import Column from '../../components/Column'
 import Row from '../../components/Row'
@@ -20,7 +21,7 @@ const ServiceSection = styled.section`
   position: relative;
 `;
 
-const PowerHouse = styled.div`
+const Flexible = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
@@ -28,16 +29,15 @@ const PowerHouse = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #18171c;
   padding: 50px 10%;
 `;
 
-const PowerHouseTitle = styled.h2`
+const FlexibleTitle = styled.h2`
   font-size: 50px;
   padding: 20px 0;
   text-align: center;
 `
-const PowerHouseText = styled.p`
+const FlexibleText = styled.p`
   line-height: 29px;
   font-size: 16px;
   font-weight: normal;
@@ -45,10 +45,12 @@ const PowerHouseText = styled.p`
   text-align: center;
 `
 
-const PowerHouseSection = () => {
+const FlexibleSection = () => {
   const ref = useRef(null);
-  const sloganRef = useRef(null);
-  const imgRef = useRef(null);
+  const flexibleSloganRef = useRef(null);
+  const sturdySloganRef = useRef(null);
+  const flexibleImgRef = useRef(null);
+  const sturdyImgRef = useRef(null);
 
   useEffect(() => {
     const element = ref.current;
@@ -71,7 +73,24 @@ const PowerHouseSection = () => {
           },
         }
       );
-      sloganRef.current.childNodes.forEach((elem, index) => {
+      flexibleSloganRef.current.childNodes.forEach((elem, index) => {
+        elem.style.opacity = 0.15;
+        gsap.to(
+          elem,
+          {
+            opacity: 1,
+            ease: "slow",
+            scrollTrigger: {
+              id: `section-${index}`,
+              trigger: elem,
+              start: "center center+=300",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
+      sturdySloganRef.current.childNodes.forEach((elem, index) => {
         elem.style.opacity = 0.15;
         gsap.to(
           elem,
@@ -89,19 +108,33 @@ const PowerHouseSection = () => {
         );
       });
       gsap.from(
-        imgRef.current.childNodes[0],
+        flexibleImgRef.current.childNodes[0],
         {
           transform: 'skew(10deg, 10deg)',
           ease: "slow",
           scrollTrigger: {
             id: `section-21`,
-            trigger: imgRef.current.childNodes[0],
+            trigger: flexibleImgRef.current.childNodes[0],
             start: "bottom bottom",
             end: "top top",
             scrub: true,
           },
         }
-      );      
+      );
+      gsap.from(
+        sturdyImgRef.current.childNodes[0],
+        {
+          transform: 'skew(10deg, 10deg)',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: sturdyImgRef.current.childNodes[0],
+            start: "bottom bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
     } else {
       gsap.to(element, {
         position: "fixed",
@@ -128,25 +161,39 @@ const PowerHouseSection = () => {
   }, []);
 
   return (
-    <PowerHouse id='power_house' ref={ref}>
+    <Flexible id='power_house' ref={ref}>
       <Row>
-        <Column xs={12} md={6} ref={sloganRef}>
-          <PowerHouseTitle>
-            The Power House
-          </PowerHouseTitle>
+        <Column xs={12} md={6} ref={flexibleSloganRef}>
+          <FlexibleTitle>
+            Flexible
+          </FlexibleTitle>
           <img src={BottomLine} style={{ width: '80%' }} alt="Bottom Line" />
-          <PowerHouseText>
-            Bikes have a large engine in the front, and you have a gearbox, which is cumbersome. Electric bikes do not have these problems, the motor is much smaller, and the battery is much more powerful. This will allow you to play with different shapes and dimensions of the roads. Svitch bike comes with various batter options. <br />
-            1. MXE- 36 Volt, 8.7AH & 36 Volt, 9.6 AH <br />
-            2. XE & XE+ – 48 Volt, 11.6 AH & 48 Volt, 14.5 Ah. <br />
-          </PowerHouseText>
+          <FlexibleText>
+            We know it’s hard to carry cycles around, each time you go on a hike or a trip. But we’ve got you covered. Svitch is a completely foldable bike which can even fit in the trunk of your car.
+            <br />
+            Flip it! Fold it! Take it!
+          </FlexibleText>
         </Column>
-        <Column xs={12} md={6} ref={imgRef}>
-          <img src={BikeImg} alt="Bike 2" />
+        <Column xs={12} md={6} ref={flexibleImgRef}>
+          <img src={FlexibleImg} alt="Flexible Bike 2" />
         </Column>
       </Row>
-    </PowerHouse>
+      <Row>
+        <Column xs={12} md={6} ref={sturdyImgRef}>
+          <img src={SturdyImg} alt="Sturdy Bike 1" />
+        </Column>
+        <Column xs={12} md={6} ref={sturdySloganRef}>
+          <FlexibleTitle>
+            Sturdy
+          </FlexibleTitle>
+          <img src={BottomLine} style={{ width: '80%' }} alt="Bottom Line" />
+          <FlexibleText>
+            Made with premium quality Aluminum 6061, so that it can sustain the extremities which your adventure demands.
+          </FlexibleText>
+        </Column>
+      </Row>
+    </Flexible>
   );
 };
 
-export default PowerHouseSection;
+export default FlexibleSection;

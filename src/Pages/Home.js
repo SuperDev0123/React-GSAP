@@ -11,7 +11,11 @@ import PrimeMover from "../Sections/PrimeMover/index";
 import Comfort from "../Sections/Comfort/index";
 import PowerHouse from "../Sections/PowerHouse/index";
 import DualSuspension from "../Sections/DualSuspension/index";
+import Flexible from "../Sections/Flexible/index";
+import Sturdy from "../Sections/Sturdy/index";
 import SubFooter from "../Sections/SubFooter/index";
+import BigDaddy from "../Sections/BigDaddy/index";
+
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -40,10 +44,10 @@ const Home = () => {
       <div style={{ height: '60vh' }} />
       <DualSuspension />
       <div style={{ height: '100vh' }} />
-      {/* <About /> */}
-      {/* <Services /> */}
-      {/* <Testimonials />
-      <Contact /> */}
+      <Flexible />
+      <div style={{ height: '100vh' }} />
+      <BigDaddy />
+      <div style={{ height: '100vh' }} />
       <SubFooter />
     </Container>
   );

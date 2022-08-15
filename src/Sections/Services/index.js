@@ -79,7 +79,6 @@ const Services = () => {
           trigger: document.getElementById("line"),
           start: "top top+=200",
           end: "bottom top+=220",
-          scrub: true,
         },
       }
     );
@@ -98,8 +97,6 @@ const Services = () => {
             trigger: capRef.current,
             start: "top center+=200",
             end: "top+=600 center-=600",
-            scrub: true,
-            snap: true,
             //
             // toggleActions: "play none none reverse",
           },
@@ -115,8 +112,6 @@ const Services = () => {
             trigger: capRef.current,
             start: "top center+=200",
             end: "center center",
-            scrub: true,
-            snap: true,
 
             // toggleActions: "play none none reverse",
           },

@@ -32,22 +32,16 @@ const MainContent = styled.div`
 
   position: absolute;
   top: 85%;
-  right: 15%;
+  right: 5%;
   display: flex;
   align-items: end;
   line-height: 29px;
-  transform: translate(50%, -50%);
+  transform: translate(0, -50%);
   font-size: 31px;
   text-transform: uppercase;
   font-family: "Oswald";
   transition: none 0s ease 0s;
   font-weight: 600;
-  @media only Screen and (max-width: 48em) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-  }
 `;
 
 const VideoBackground = styled.div`
