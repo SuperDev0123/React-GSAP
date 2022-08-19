@@ -10,27 +10,6 @@ const FOOTER = styled.footer`
   background-image: url(${FooterBackground});
 `;
 
-const RightText = styled.div`
-  display: flex;
-  align-items: center;
-  img {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-left: 1rem;
-    filter: invert(100%);
-    transition: all 0.2s ease-in-out;
-  }
-  a {
-    &:hover {
-      img {
-        transform: scale(1.5);
-        filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(216deg)
-          brightness(100%) contrast(97%);
-      }
-    }
-  }
-`;
-
 const FooterRow = styled.div`
   display: flex;
   flex-wrap: wrap;

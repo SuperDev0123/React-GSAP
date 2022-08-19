@@ -1,25 +1,13 @@
 // This is HeroSection component, Main top section of website
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import styled, { keyframes } from "styled-components";
-import { HeartFill } from '@styled-icons/bootstrap'
+import styled from "styled-components";
 import FlexibleImg from "../../assets/Flexible-bike-2.png";
 import SturdyImg from "../../assets/Sturd1y-600x477.png";
 import BottomLine from "../../assets/border-bottom-line.png";
 import Column from '../../components/Column'
 import Row from '../../components/Row'
-
-const ServiceSection = styled.section`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
 
 const Flexible = styled.div`
   width: 100%;
@@ -45,12 +33,63 @@ const FlexibleText = styled.p`
   text-align: center;
 `
 
+const FlexibleBorder = styled.div`
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  top: 0;
+  right: 0;
+  border-top: 2px solid #f0bc3f;
+  border-left: 2px solid #f0bc3f;
+  opacity: 0;
+`
+
+const SturdyBorder = styled.div`
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  border-top: 2px solid #f0bc3f;
+  border-right: 2px solid #f0bc3f;
+  opacity: 0;
+`
+
+const BottomBorder = styled.div`
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  bottom: 0;
+  right: 0;
+  border-top: 2px solid #f0bc3f;
+  border-left: 2px solid #f0bc3f;
+  opacity: 0;
+`
+
+const FlexibleMask = styled.div`
+  position: absolute;
+  width: 0%;
+  height: calc(100% + 40px);
+  background: black;
+  top: -20px;
+  right: -20px;
+  filter: blur(12px);
+`
+
+const SturdyMask = styled.div`
+  position: absolute;
+  width: 0%;
+  height: calc(100% + 40px);
+  background: black;
+  top: -20px;
+  left: -20px;
+  filter: blur(12px);
+`
+
 const FlexibleSection = () => {
   const ref = useRef(null);
-  const flexibleSloganRef = useRef(null);
-  const sturdySloganRef = useRef(null);
-  const flexibleImgRef = useRef(null);
-  const sturdyImgRef = useRef(null);
+  const flexibleRef = useRef(null);
+  const sturdyRef = useRef(null);
 
   useEffect(() => {
     const element = ref.current;
@@ -73,7 +112,7 @@ const FlexibleSection = () => {
           },
         }
       );
-      flexibleSloganRef.current.childNodes.forEach((elem, index) => {
+      flexibleRef.current.childNodes[0].childNodes.forEach((elem, index) => {
         elem.style.opacity = 0.15;
         gsap.to(
           elem,
@@ -90,7 +129,7 @@ const FlexibleSection = () => {
           }
         );
       });
-      sturdySloganRef.current.childNodes.forEach((elem, index) => {
+      sturdyRef.current.childNodes[1].childNodes.forEach((elem, index) => {
         elem.style.opacity = 0.15;
         gsap.to(
           elem,
@@ -108,13 +147,13 @@ const FlexibleSection = () => {
         );
       });
       gsap.from(
-        flexibleImgRef.current.childNodes[0],
+        flexibleRef.current.childNodes[1],
         {
           transform: 'skew(10deg, 10deg)',
           ease: "slow",
           scrollTrigger: {
             id: `section-21`,
-            trigger: flexibleImgRef.current.childNodes[0],
+            trigger: flexibleRef.current,
             start: "bottom bottom",
             end: "top top",
             scrub: true,
@@ -122,14 +161,143 @@ const FlexibleSection = () => {
         }
       );
       gsap.from(
-        sturdyImgRef.current.childNodes[0],
+        sturdyRef.current.childNodes[0].childNodes[0],
         {
           transform: 'skew(10deg, 10deg)',
           ease: "slow",
           scrollTrigger: {
             id: `section-21`,
-            trigger: sturdyImgRef.current.childNodes[0],
+            trigger: sturdyRef.current,
             start: "bottom bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
+      gsap.to(
+        flexibleRef.current.childNodes[2],
+        {
+          width: '100%',
+          opacity: 1,
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: flexibleRef.current,
+            start: "center bottom",
+            end: "center+=200 bottom",
+            scrub: true,
+          },
+        }
+      );
+      gsap.to(
+        flexibleRef.current.childNodes[2],
+        {
+          height: '100%',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: flexibleRef.current,
+            start: "center+=200 bottom",
+            end: "bottom+=200 bottom",
+            scrub: true,
+          },
+        }
+      );
+      gsap.to(
+        sturdyRef.current.childNodes[2],
+        {
+          width: '100%',
+          opacity: 1,
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: sturdyRef.current,
+            start: "center bottom",
+            end: "center+=200 bottom",
+            scrub: true,
+          },
+        }
+      );
+      gsap.to(
+        sturdyRef.current.childNodes[2],
+        {
+          height: '100%',
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: sturdyRef.current,
+            start: "center+=200 bottom",
+            end: "bottom+=200 bottom",
+            scrub: true,
+          },
+        }
+      );
+      gsap.to(
+        sturdyRef.current.childNodes[3],
+        {
+          width: '100%',
+          opacity: 1,
+          ease: "slow",
+          scrollTrigger: {
+            id: `section-21`,
+            trigger: sturdyRef.current,
+            start: "bottom+=200 bottom",
+            end: "bottom+=400 bottom",
+            scrub: true,
+          },
+        }
+      );
+      gsap.from(
+        flexibleRef.current.childNodes[1].childNodes[1],
+        {
+          width: 'calc(100% + 40px)',
+          ease: "power2",
+          scrollTrigger: {
+            id: `section-31`,
+            trigger: flexibleRef.current,
+            start: "center bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
+      gsap.from(
+        flexibleRef.current.childNodes[1],
+        {
+          opacity: 0,
+          ease: "power2",
+          scrollTrigger: {
+            id: `section-31`,
+            trigger: flexibleRef.current,
+            start: "center bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
+      gsap.from(
+        sturdyRef.current.childNodes[0].childNodes[1],
+        {
+          width: 'calc(100% + 40px)',
+          ease: "power2",
+          scrollTrigger: {
+            id: `section-31`,
+            trigger: sturdyRef.current,
+            start: "center bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
+      gsap.from(
+        sturdyRef.current.childNodes[0],
+        {
+          opacity: 0,
+          ease: "power2",
+          scrollTrigger: {
+            id: `section-31`,
+            trigger: sturdyRef.current,
+            start: "center bottom",
             end: "top top",
             scrub: true,
           },
@@ -162,8 +330,8 @@ const FlexibleSection = () => {
 
   return (
     <Flexible id='power_house' ref={ref}>
-      <Row>
-        <Column xs={12} md={6} ref={flexibleSloganRef}>
+      <Row style={{ position: 'relative', padding: 20 }} ref={flexibleRef}>
+        <Column xs={12} md={6}>
           <FlexibleTitle>
             Flexible
           </FlexibleTitle>
@@ -174,15 +342,18 @@ const FlexibleSection = () => {
             Flip it! Fold it! Take it!
           </FlexibleText>
         </Column>
-        <Column xs={12} md={6} ref={flexibleImgRef}>
+        <Column xs={12} md={6} style={{position: 'relative'}}>
           <img src={FlexibleImg} alt="Flexible Bike 2" />
+          <FlexibleMask />
         </Column>
+        <FlexibleBorder />
       </Row>
-      <Row>
-        <Column xs={12} md={6} ref={sturdyImgRef}>
+      <Row style={{ position: 'relative', padding: 20 }} ref={sturdyRef}>
+        <Column xs={12} md={6} style={{position: 'relative'}}>
           <img src={SturdyImg} alt="Sturdy Bike 1" />
+          <SturdyMask />
         </Column>
-        <Column xs={12} md={6} ref={sturdySloganRef}>
+        <Column xs={12} md={6}>
           <FlexibleTitle>
             Sturdy
           </FlexibleTitle>
@@ -191,6 +362,8 @@ const FlexibleSection = () => {
             Made with premium quality Aluminum 6061, so that it can sustain the extremities which your adventure demands.
           </FlexibleText>
         </Column>
+        <SturdyBorder />
+        <BottomBorder />
       </Row>
     </Flexible>
   );

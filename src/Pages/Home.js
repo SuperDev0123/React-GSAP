@@ -2,17 +2,15 @@
 
 //Import all the require sections here
 import HeroSection from "../Sections/Hero/index";
-import About from "../Sections/About/index";
-import Services from "../Sections/Services/index";
 import Captivating from "../Sections/Captivating/index";
 import Speed from "../Sections/Speed/index";
 import SpeedChart from "../Sections/SpeedChart/index";
 import PrimeMover from "../Sections/PrimeMover/index";
 import Comfort from "../Sections/Comfort/index";
-import PowerHouse from "../Sections/PowerHouse/index";
+import PowerHouse from "../Sections/NumberPanel/index";
 import DualSuspension from "../Sections/DualSuspension/index";
 import Flexible from "../Sections/Flexible/index";
-import Sturdy from "../Sections/Sturdy/index";
+import NumberPanel from "../Sections/NumberPanel/index";
 import SubFooter from "../Sections/SubFooter/index";
 import BigDaddy from "../Sections/BigDaddy/index";
 
@@ -45,6 +43,8 @@ const Home = () => {
       <DualSuspension />
       <div style={{ height: '100vh' }} />
       <Flexible />
+      <div style={{ height: '100vh' }} />
+      <NumberPanel />
       <div style={{ height: '100vh' }} />
       <BigDaddy />
       <div style={{ height: '100vh' }} />

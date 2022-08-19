@@ -1,16 +1,9 @@
 // This is HeroSection component, Main top section of website
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { HeartFill } from '@styled-icons/bootstrap'
-
-const move = keyframes`
-0% { transform: translateY(-5px)  }
-    50% { transform: translateY(10px) }
-    100% { transform: translateY(-5px) }
-`;
 
 const HomeSection = styled.section`
   width: 100%;
@@ -51,17 +44,6 @@ const VideoBackground = styled.div`
 const Video = styled.video`
   width: 100%;
   height: 100%;
-`;
-const Topic = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--nav);
-  color: var(--white);
-  font-weight: 700;
-  font-size: calc(0.4rem + 0.4vw);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
 `;
 
 const HeroSection = () => {

@@ -1,24 +1,9 @@
 // This is HeroSection component, Main top section of website
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import styled, { keyframes } from "styled-components";
-import { HeartFill } from '@styled-icons/bootstrap'
-import PrimeMoverImg from "../../assets/The-Prime-Mover.jpg";
+import styled from "styled-components";
 import BottomLine from "../../assets/border-bottom-line.png";
-import Column from '../../components/Column'
-import Row from '../../components/Row'
-
-const ServiceSection = styled.section`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  justify-content: center;
-  position: relative;  
-`;
 
 const Comfort = styled.div`
   width: 60vw;

@@ -1,24 +1,12 @@
 // This is HeroSection component, Main top section of website
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import styled, { keyframes } from "styled-components";
-import { HeartFill } from '@styled-icons/bootstrap'
+import styled from "styled-components";
 import BikeImg from "../../assets/Accera-bike-2.png";
 import BottomLine from "../../assets/border-bottom-line.png";
 import Column from '../../components/Column'
 import Row from '../../components/Row'
-
-const ServiceSection = styled.section`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
 
 const PowerHouse = styled.div`
   width: 100%;
@@ -45,6 +33,16 @@ const PowerHouseText = styled.p`
   text-align: center;
 `
 
+const Mask = styled.div`
+  position: absolute;
+  width: 0%;
+  height: calc(100% + 40px);
+  background: #18171c;
+  top: -20px;
+  right: -20px;
+  filter: blur(12px);
+`
+
 const PowerHouseSection = () => {
   const ref = useRef(null);
   const sloganRef = useRef(null);
@@ -57,20 +55,20 @@ const PowerHouseSection = () => {
     // console.log("mq", mq);
     // if (mq.matches) {
     if (true) {
-      gsap.from(
-        element,
-        {
-          background: 'rgba(0,0,0,0)',
-          ease: "power2",
-          scrollTrigger: {
-            id: `section-11`,
-            trigger: element,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
-          },
-        }
-      );
+      // gsap.from(
+      //   element,
+      //   {
+      //     background: 'rgba(0,0,0,0)',
+      //     ease: "power2",
+      //     scrollTrigger: {
+      //       id: `section-11`,
+      //       trigger: element,
+      //       start: "top bottom",
+      //       end: "top top",
+      //       scrub: true,
+      //     },
+      //   }
+      // );
       sloganRef.current.childNodes.forEach((elem, index) => {
         elem.style.opacity = 0.15;
         gsap.to(
@@ -89,19 +87,34 @@ const PowerHouseSection = () => {
         );
       });
       gsap.from(
-        imgRef.current.childNodes[0],
+        imgRef.current,
         {
           transform: 'skew(10deg, 10deg)',
+          opacity: 0,
           ease: "slow",
           scrollTrigger: {
             id: `section-21`,
-            trigger: imgRef.current.childNodes[0],
+            trigger: imgRef.current,
             start: "bottom bottom",
             end: "top top",
             scrub: true,
           },
         }
-      );      
+      );
+      gsap.from(
+        imgRef.current.childNodes[1],
+        {
+          width: 'calc(100% + 40px)',
+          ease: "power2",
+          scrollTrigger: {
+            id: `section-31`,
+            trigger: imgRef.current,
+            start: "bottom bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
     } else {
       gsap.to(element, {
         position: "fixed",
@@ -141,8 +154,9 @@ const PowerHouseSection = () => {
             2. XE & XE+ – 48 Volt, 11.6 AH & 48 Volt, 14.5 Ah. <br />
           </PowerHouseText>
         </Column>
-        <Column xs={12} md={6} ref={imgRef}>
+        <Column xs={12} md={6} ref={imgRef} style={{ position: 'relative' }}>
           <img src={BikeImg} alt="Bike 2" />
+          <Mask />
         </Column>
       </Row>
     </PowerHouse>

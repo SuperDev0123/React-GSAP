@@ -1,23 +1,10 @@
 // This is HeroSection component, Main top section of website
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import styled, { keyframes } from "styled-components";
-import { HeartFill } from '@styled-icons/bootstrap'
+import styled from "styled-components";
 import CapBn from "../../assets/cap-bn.jpg";
 import CapText from "../../assets/cap-1.png";
-
-const ServiceSection = styled.section`
-  width: 100vw;
-  /* background-color: #0a0b10; */
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
 
 const Captivating = styled.div`
   width: 100%;

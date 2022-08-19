@@ -1,5 +1,3 @@
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import BoxImg from "../../assets/6box.jpg";

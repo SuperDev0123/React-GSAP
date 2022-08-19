@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import logo from "../../assets/Svitch White.png";
 
@@ -131,72 +131,21 @@ const Header = () => {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const scrollUp = (id, e) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-  };
+  // const scrollUp = (id, e) => {
+  //   e.preventDefault();
+  //   const element = document.getElementById(id);
+  //   element.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "end",
+  //     inline: "nearest",
+  //   });
+  // };
 
   const handleClick = (id, e) => {
     setClick(!click);
-    scrollUp(id, e);
+    // scrollUp(id, e);
+    setCountry(0)
   };
-
-  // useEffect(() => {
-  //   const element = ref.current;
-
-  //   const mq = window.matchMedia("(max-width: 40em)");
-  //   // console.log("mq", mq);
-  //   if (mq.matches) {
-  //     gsap.to(element, {
-  //       position: "fixed",
-  //       top: "0",
-  //       left: "0",
-  //       right: "0",
-  //       padding: "1rem 2.5rem",
-
-  //       borderRadius: "0 0 50px 50px",
-
-  //       border: "2px solid var(--white)",
-
-  //       duration: 1,
-  //       ease: "power1.out",
-
-  //       scrollTrigger: {
-  //         trigger: element,
-  //         start: "bottom+=200 top",
-  //         end: "+=100",
-  //         scrub: true,
-  //       },
-  //     });
-  //   } else {
-  //     gsap.to(element, {
-  //       position: "fixed",
-  //       top: "1rem",
-  //       left: "3rem",
-  //       right: "3rem",
-  //       padding: "1.5rem 2rem",
-
-  //       borderRadius: "50px",
-
-  //       border: "3px solid var(--white)",
-
-  //       duration: 1,
-  //       ease: "power1.out",
-
-  //       scrollTrigger: {
-  //         trigger: element,
-  //         start: "bottom+=300 top",
-  //         end: "+=250",
-  //         scrub: true,
-  //       },
-  //     });
-  //   }
-  // }, []);
 
   return (
     <Headers ref={ref}>
@@ -213,7 +162,7 @@ const Header = () => {
       </Logo>
 
       <RightBtns>
-        <CountryBtn>
+        <CountryBtn onClick={handleClick}>
           {CountryList[country]}
         </CountryBtn>
         <Cart>

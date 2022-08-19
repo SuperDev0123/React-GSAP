@@ -1,24 +1,12 @@
 // This is HeroSection component, Main top section of website
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import styled, { keyframes } from "styled-components";
-import { HeartFill } from '@styled-icons/bootstrap'
+import styled from "styled-components";
 import BikeImg from "../../assets/Accera-bike-1.png";
 import BottomLine from "../../assets/border-bottom-line.png";
 import Column from '../../components/Column'
 import Row from '../../components/Row'
-
-const ServiceSection = styled.section`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
 
 const DualSuspension = styled.div`
   width: 100%;
@@ -42,6 +30,16 @@ const DualSuspensionText = styled.p`
   font-weight: normal;
   padding: 20px 0;
   text-align: center;
+`
+
+const Mask = styled.div`
+  position: absolute;
+  width: 0%;
+  height: calc(100% + 40px);
+  background: black;
+  top: -20px;
+  left: -20px;
+  filter: blur(12px);
 `
 
 const DualSuspensionSection = () => {
@@ -91,10 +89,25 @@ const DualSuspensionSection = () => {
         imgRef.current.childNodes[0],
         {
           transform: 'skew(10deg, 10deg)',
+          opacity: 0,
           ease: "slow",
           scrollTrigger: {
             id: `section-21`,
             trigger: imgRef.current.childNodes[0],
+            start: "bottom bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
+      gsap.from(
+        imgRef.current.childNodes[1],
+        {
+          width: 'calc(100% + 40px)',
+          ease: "power2",
+          scrollTrigger: {
+            id: `section-31`,
+            trigger: imgRef.current,
             start: "bottom bottom",
             end: "top top",
             scrub: true,
@@ -127,10 +140,11 @@ const DualSuspensionSection = () => {
   }, []);
 
   return (
-    <DualSuspension id='power_house' ref={ref}>
+    <DualSuspension id='dual_suspension' ref={ref}>
       <Row>
-        <Column xs={12} md={6} ref={imgRef}>
+        <Column xs={12} md={6} ref={imgRef} style={{ position: 'relative' }}>
           <img src={BikeImg} alt="Bike 1" />
+          <Mask />
         </Column>
         <Column xs={12} md={6} ref={sloganRef}>
           <DualSuspensionTitle>
